@@ -7,9 +7,11 @@
 
 #import "DataManger.h"
 #import "DataManagedObject.h"
+#import "PublisherXPCServiceProtocol.h"
 
 @interface DataManger ()
 @property (readonly) NSEntityDescription *entityDescription;
+@property (retain) NSXPCConnection *serviceConnection;
 @end
 
 @implementation DataManger
@@ -21,7 +23,7 @@
     dispatch_once(&onceToken, ^{
         sharedInstance = [DataManger new];
     });
-
+    
     return sharedInstance;
 }
 
@@ -30,6 +32,7 @@
         [self setupQueue];
         [self setupContainer];
         [self setupContext];
+        [self setupServiceConnection];
         [self addObserver];
     }
     
@@ -41,6 +44,8 @@
     [_context release];
     [_queue cancelAllOperations];
     [_queue release];
+    [_serviceConnection invalidate];
+    [_serviceConnection release];
     [super dealloc];
 }
 
@@ -104,10 +109,44 @@
     }];
 }
 
+- (void)setupServiceConnection {
+    [self.queue addBarrierBlock:^{
+        NSXPCConnection *serviceConnection = [[NSXPCConnection alloc] initWithServiceName:@"com.pookjw.Publisher.XPCService"];
+        
+        NSXPCInterface *remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(PublisherXPCServiceProtocol)];
+        [remoteObjectInterface setClasses:[NSSet setWithArray:@[NSDictionary.class, NSArray.class, NSString.class, NSURL.class]]
+                              forSelector:@selector(objectsDidChange:withReply:)
+                            argumentIndex:0
+                                  ofReply:NO];
+        serviceConnection.remoteObjectInterface = remoteObjectInterface;
+        
+        serviceConnection.invalidationHandler = ^{
+            // Release objects captured by block.
+            serviceConnection.invalidationHandler = nil;
+            static NSUInteger retryCount = 0;
+            
+            [self.queue addBarrierBlock:^{
+                retryCount += 1;
+                NSLog(@"Invaldated XPC Connection, retrying... (%ld)", retryCount);
+                
+                if (retryCount == 10) {
+                    assert("Recheaded maximum count of retry.");
+                }
+                
+                [self setupServiceConnection];
+            }];
+        };
+        
+        [serviceConnection activate];
+        self.serviceConnection = serviceConnection;
+        [serviceConnection release];
+    }];
+}
+
 - (void)addObserver {
     [self.queue addBarrierBlock:^{
         [NSNotificationCenter.defaultCenter addObserver:self
-                                               selector:@selector(triggeredContextDidSaveNotification:)
+                                               selector:@selector(triggeredObjectsDidChangeNotification:)
                                                    name:NSManagedObjectContextObjectsDidChangeNotification
                                                  object:self.context];
     }];
@@ -140,24 +179,39 @@
     return [entityDescription autorelease];
 }
 
-- (void)triggeredContextDidSaveNotification:(NSNotification *)notification {
+- (void)triggeredObjectsDidChangeNotification:(NSNotification *)notification {
     NSDictionary *userInfo = notification.userInfo;
     
     NSMutableDictionary *changes = [NSMutableDictionary new];
     [userInfo enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id _Nonnull obj, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[NSSet<DataManagedObject *> class]]) {
             NSMutableArray *URIRepresentations = [NSMutableArray new];
+            
             [obj enumerateObjectsUsingBlock:^(DataManagedObject * _Nonnull obj, BOOL * _Nonnull stop) {
                 [URIRepresentations addObject:obj.objectID.URIRepresentation];
             }];
-            changes[key] = URIRepresentations;
+            
+            NSArray *results = [URIRepresentations copy];
             [URIRepresentations release];
-        } else {
-            changes[key] = obj;
+            changes[key] = results;
+            [results release];
         }
     }];
     
+    id<PublisherXPCServiceProtocol> remoteObjectProxy = [self.serviceConnection remoteObjectProxyWithErrorHandler:^(NSError * _Nonnull error) {
+        if (error.code != 4097) {
+            [NSException raise:NSInternalInconsistencyException format:@"%@", error];
+        }
+    }];
+    
+    NSDictionary *results = [changes copy];
     [changes release];
+    
+    [remoteObjectProxy objectsDidChange:results withReply:^{
+        NSLog(@"GOOD");
+    }];
+    
+    [results release];
 }
 
 @end

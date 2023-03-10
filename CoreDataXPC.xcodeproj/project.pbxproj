@@ -28,7 +28,20 @@
 		4FB9414D29BBBEF900A63A3A /* DataManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9414B29BBBEF600A63A3A /* DataManagedObject.m */; };
 		4FB9415129BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9415029BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm */; };
 		4FB9415229BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9415029BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm */; };
+		4FB9417629BBD7B100A63A3A /* PublisherXPCService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9417529BBD7B100A63A3A /* PublisherXPCService.m */; };
+		4FB9417829BBD7B100A63A3A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9417729BBD7B100A63A3A /* main.m */; };
+		4FB9417D29BBD7B100A63A3A /* PublisherXPCService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 4FB9417129BBD7B000A63A3A /* PublisherXPCService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4FB9417B29BBD7B100A63A3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FB940E329BBAD1400A63A3A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FB9417029BBD7B000A63A3A;
+			remoteInfo = PublisherXPCService;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		4FB9412529BBAD4800A63A3A /* CopyFiles */ = {
@@ -39,6 +52,17 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
+		};
+		4FB9416C29BBD78100A63A3A /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				4FB9417D29BBD7B100A63A3A /* PublisherXPCService.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -77,6 +101,13 @@
 		4FB9414B29BBBEF600A63A3A /* DataManagedObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManagedObject.m; sourceTree = "<group>"; };
 		4FB9414F29BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Foundation_IvarDescription.h"; sourceTree = "<group>"; };
 		4FB9415029BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSObject+Foundation_IvarDescription.mm"; sourceTree = "<group>"; };
+		4FB9417129BBD7B000A63A3A /* PublisherXPCService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = PublisherXPCService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FB9417329BBD7B100A63A3A /* PublisherXPCServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublisherXPCServiceProtocol.h; sourceTree = "<group>"; };
+		4FB9417429BBD7B100A63A3A /* PublisherXPCService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublisherXPCService.h; sourceTree = "<group>"; };
+		4FB9417529BBD7B100A63A3A /* PublisherXPCService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PublisherXPCService.m; sourceTree = "<group>"; };
+		4FB9417729BBD7B100A63A3A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4FB9417929BBD7B100A63A3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FB9417A29BBD7B100A63A3A /* PublisherXPCService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PublisherXPCService.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +126,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4FB9412429BBAD4800A63A3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FB9416E29BBD7B000A63A3A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -121,6 +159,7 @@
 				4FB940F929BBAD2C00A63A3A /* Publisher.app */,
 				4FB9411029BBAD3B00A63A3A /* Receiver.app */,
 				4FB9412729BBAD4800A63A3A /* CoreDataXPCHelper */,
+				4FB9417129BBD7B000A63A3A /* PublisherXPCService.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,6 +176,7 @@
 				4FB9410129BBAD2C00A63A3A /* Assets.xcassets */,
 				4FB9410629BBAD2C00A63A3A /* main.m */,
 				4FB9410829BBAD2C00A63A3A /* Publisher.entitlements */,
+				4FB9417229BBD7B100A63A3A /* PublisherXPCService */,
 			);
 			path = Publisher;
 			sourceTree = "<group>";
@@ -169,8 +209,9 @@
 			isa = PBXGroup;
 			children = (
 				4FB9414E29BBCFBC00A63A3A /* Category */,
-				4FB9413A29BBB8FD00A63A3A /* CoreData */,
 				4FB9413B29BBB90300A63A3A /* Menu */,
+				4FB9413A29BBB8FD00A63A3A /* CoreData */,
+				4FB9415729BBD74600A63A3A /* XPC */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -216,6 +257,26 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		4FB9415729BBD74600A63A3A /* XPC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = XPC;
+			sourceTree = "<group>";
+		};
+		4FB9417229BBD7B100A63A3A /* PublisherXPCService */ = {
+			isa = PBXGroup;
+			children = (
+				4FB9417329BBD7B100A63A3A /* PublisherXPCServiceProtocol.h */,
+				4FB9417429BBD7B100A63A3A /* PublisherXPCService.h */,
+				4FB9417529BBD7B100A63A3A /* PublisherXPCService.m */,
+				4FB9417729BBD7B100A63A3A /* main.m */,
+				4FB9417929BBD7B100A63A3A /* Info.plist */,
+				4FB9417A29BBD7B100A63A3A /* PublisherXPCService.entitlements */,
+			);
+			path = PublisherXPCService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -226,10 +287,12 @@
 				4FB940F529BBAD2C00A63A3A /* Sources */,
 				4FB940F629BBAD2C00A63A3A /* Frameworks */,
 				4FB940F729BBAD2C00A63A3A /* Resources */,
+				4FB9416C29BBD78100A63A3A /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4FB9417C29BBD7B100A63A3A /* PBXTargetDependency */,
 			);
 			name = Publisher;
 			productName = Publisher;
@@ -270,6 +333,23 @@
 			productReference = 4FB9412729BBAD4800A63A3A /* CoreDataXPCHelper */;
 			productType = "com.apple.product-type.tool";
 		};
+		4FB9417029BBD7B000A63A3A /* PublisherXPCService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FB9417E29BBD7B100A63A3A /* Build configuration list for PBXNativeTarget "PublisherXPCService" */;
+			buildPhases = (
+				4FB9416D29BBD7B000A63A3A /* Sources */,
+				4FB9416E29BBD7B000A63A3A /* Frameworks */,
+				4FB9416F29BBD7B000A63A3A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PublisherXPCService;
+			productName = PublisherXPCService;
+			productReference = 4FB9417129BBD7B000A63A3A /* PublisherXPCService.xpc */;
+			productType = "com.apple.product-type.xpc-service";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -288,6 +368,9 @@
 					4FB9412629BBAD4800A63A3A = {
 						CreatedOnToolsVersion = 14.3;
 					};
+					4FB9417029BBD7B000A63A3A = {
+						CreatedOnToolsVersion = 14.3;
+					};
 				};
 			};
 			buildConfigurationList = 4FB940E629BBAD1400A63A3A /* Build configuration list for PBXProject "CoreDataXPC" */;
@@ -304,6 +387,7 @@
 			projectRoot = "";
 			targets = (
 				4FB940F829BBAD2C00A63A3A /* Publisher */,
+				4FB9417029BBD7B000A63A3A /* PublisherXPCService */,
 				4FB9410F29BBAD3B00A63A3A /* Receiver */,
 				4FB9412629BBAD4800A63A3A /* CoreDataXPCHelper */,
 			);
@@ -324,6 +408,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FB9411929BBAD3C00A63A3A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FB9416F29BBD7B000A63A3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +461,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4FB9416D29BBD7B000A63A3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FB9417829BBD7B100A63A3A /* main.m in Sources */,
+				4FB9417629BBD7B100A63A3A /* PublisherXPCService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4FB9417C29BBD7B100A63A3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4FB9417029BBD7B000A63A3A /* PublisherXPCService */;
+			targetProxy = 4FB9417B29BBD7B100A63A3A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4FB940F029BBAD1400A63A3A /* Debug */ = {
@@ -614,6 +722,48 @@
 			};
 			name = Release;
 		};
+		4FB9417F29BBD7B100A63A3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Publisher/PublisherXPCService/PublisherXPCService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P53D29U9LJ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Publisher/PublisherXPCService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PublisherXPCService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.Publisher.XPCService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		4FB9418029BBD7B100A63A3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Publisher/PublisherXPCService/PublisherXPCService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P53D29U9LJ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Publisher/PublisherXPCService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PublisherXPCService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.Publisher.XPCService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -649,6 +799,15 @@
 			buildConfigurations = (
 				4FB9412C29BBAD4800A63A3A /* Debug */,
 				4FB9412D29BBAD4800A63A3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FB9417E29BBD7B100A63A3A /* Build configuration list for PBXNativeTarget "PublisherXPCService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FB9417F29BBD7B100A63A3A /* Debug */,
+				4FB9418029BBD7B100A63A3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
