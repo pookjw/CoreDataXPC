@@ -24,6 +24,10 @@
 		4FB9414329BBB96700A63A3A /* AppMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9414129BBB94900A63A3A /* AppMenuItem.m */; };
 		4FB9414629BBBB0200A63A3A /* EditMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9414529BBBB0200A63A3A /* EditMenuItem.m */; };
 		4FB9414929BBBCA200A63A3A /* ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9414829BBBCA200A63A3A /* ViewModel.m */; };
+		4FB9414C29BBBEF600A63A3A /* DataManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9414B29BBBEF600A63A3A /* DataManagedObject.m */; };
+		4FB9414D29BBBEF900A63A3A /* DataManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9414B29BBBEF600A63A3A /* DataManagedObject.m */; };
+		4FB9415129BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9415029BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm */; };
+		4FB9415229BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9415029BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +73,10 @@
 		4FB9414529BBBB0200A63A3A /* EditMenuItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditMenuItem.m; sourceTree = "<group>"; };
 		4FB9414729BBBCA200A63A3A /* ViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewModel.h; sourceTree = "<group>"; };
 		4FB9414829BBBCA200A63A3A /* ViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewModel.m; sourceTree = "<group>"; };
+		4FB9414A29BBBEF600A63A3A /* DataManagedObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManagedObject.h; sourceTree = "<group>"; };
+		4FB9414B29BBBEF600A63A3A /* DataManagedObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManagedObject.m; sourceTree = "<group>"; };
+		4FB9414F29BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Foundation_IvarDescription.h"; sourceTree = "<group>"; };
+		4FB9415029BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSObject+Foundation_IvarDescription.mm"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +168,7 @@
 		4FB9412E29BBAD5100A63A3A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4FB9414E29BBCFBC00A63A3A /* Category */,
 				4FB9413A29BBB8FD00A63A3A /* CoreData */,
 				4FB9413B29BBB90300A63A3A /* Menu */,
 			);
@@ -171,6 +180,8 @@
 			children = (
 				4FB9412F29BBAD6900A63A3A /* DataManger.h */,
 				4FB9413029BBAD6900A63A3A /* DataManger.m */,
+				4FB9414A29BBBEF600A63A3A /* DataManagedObject.h */,
+				4FB9414B29BBBEF600A63A3A /* DataManagedObject.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -194,6 +205,15 @@
 				4FB9414529BBBB0200A63A3A /* EditMenuItem.m */,
 			);
 			path = Items;
+			sourceTree = "<group>";
+		};
+		4FB9414E29BBCFBC00A63A3A /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				4FB9414F29BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.h */,
+				4FB9415029BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +340,8 @@
 				4FB9410729BBAD2C00A63A3A /* main.m in Sources */,
 				4FB940FD29BBAD2C00A63A3A /* AppDelegate.m in Sources */,
 				4FB9414629BBBB0200A63A3A /* EditMenuItem.m in Sources */,
+				4FB9414C29BBBEF600A63A3A /* DataManagedObject.m in Sources */,
+				4FB9415129BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm in Sources */,
 				4FB9413129BBAD6900A63A3A /* DataManger.m in Sources */,
 				4FB9413E29BBB93200A63A3A /* BaseMenu.m in Sources */,
 			);
@@ -332,7 +354,9 @@
 				4FB9413629BBB3BF00A63A3A /* NSTextField+ApplyLabelStyle.m in Sources */,
 				4FB9411729BBAD3B00A63A3A /* ViewController.m in Sources */,
 				4FB9411E29BBAD3C00A63A3A /* main.m in Sources */,
+				4FB9414D29BBBEF900A63A3A /* DataManagedObject.m in Sources */,
 				4FB9414329BBB96700A63A3A /* AppMenuItem.m in Sources */,
+				4FB9415229BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm in Sources */,
 				4FB9411429BBAD3B00A63A3A /* AppDelegate.m in Sources */,
 				4FB9413229BBAD6D00A63A3A /* DataManger.m in Sources */,
 			);
@@ -469,6 +493,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"PUBLISHER_APP=1",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -494,6 +523,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "PUBLISHER_APP=1";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -519,6 +549,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"RECEIVER_APP=1",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -544,6 +579,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "RECEIVER_APP=1";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;

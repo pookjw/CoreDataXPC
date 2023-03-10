@@ -108,6 +108,8 @@
     publishButton.title = @"Publish!";
     publishButton.bezelStyle = NSBezelStyleRounded;
     publishButton.translatesAutoresizingMaskIntoConstraints = NO;
+    publishButton.target = self;
+    publishButton.action = @selector(triggeredPublishButton:);
     
     [self.containerView addSubview:publishButton];
     
@@ -125,6 +127,13 @@
 - (void)setupViewModel {
     ViewModel *viewModel = [ViewModel new];
     self.viewModel = viewModel;
+    [viewModel release];
+}
+
+- (void)triggeredPublishButton:(NSButton *)publishButton {
+    [self.viewModel publishWithText:self.textField.stringValue completionHandler:^(NSError * _Nullable error) {
+        
+    }];
 }
 
 @end

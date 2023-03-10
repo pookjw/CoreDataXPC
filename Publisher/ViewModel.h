@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ViewModel : NSObject
-
+- (void)publishWithText:(NSString *)text completionHandler:(void (^)(NSError * _Nullable error))completionHandler;
 @end
 
 NS_ASSUME_NONNULL_END
