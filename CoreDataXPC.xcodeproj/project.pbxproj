@@ -31,6 +31,7 @@
 		4FB9417629BBD7B100A63A3A /* PublisherXPCService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9417529BBD7B100A63A3A /* PublisherXPCService.m */; };
 		4FB9417829BBD7B100A63A3A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9417729BBD7B100A63A3A /* main.m */; };
 		4FB9417D29BBD7B100A63A3A /* PublisherXPCService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 4FB9417129BBD7B000A63A3A /* PublisherXPCService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4FB9418529BBE3EF00A63A3A /* ServiceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9418229BBE3B500A63A3A /* ServiceDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,8 @@
 		4FB9417729BBD7B100A63A3A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4FB9417929BBD7B100A63A3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FB9417A29BBD7B100A63A3A /* PublisherXPCService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PublisherXPCService.entitlements; sourceTree = "<group>"; };
+		4FB9418129BBE3B500A63A3A /* ServiceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceDelegate.h; sourceTree = "<group>"; };
+		4FB9418229BBE3B500A63A3A /* ServiceDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +270,8 @@
 		4FB9417229BBD7B100A63A3A /* PublisherXPCService */ = {
 			isa = PBXGroup;
 			children = (
+				4FB9418129BBE3B500A63A3A /* ServiceDelegate.h */,
+				4FB9418229BBE3B500A63A3A /* ServiceDelegate.m */,
 				4FB9417329BBD7B100A63A3A /* PublisherXPCServiceProtocol.h */,
 				4FB9417429BBD7B100A63A3A /* PublisherXPCService.h */,
 				4FB9417529BBD7B100A63A3A /* PublisherXPCService.m */,
@@ -466,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FB9417829BBD7B100A63A3A /* main.m in Sources */,
+				4FB9418529BBE3EF00A63A3A /* ServiceDelegate.m in Sources */,
 				4FB9417629BBD7B100A63A3A /* PublisherXPCService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
