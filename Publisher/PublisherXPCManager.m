@@ -105,8 +105,6 @@
         }
     }];
     
-    if (![remoteObjectProxy respondsToSelector:@selector(input_objectsDidChange:)]) return;
-    
     NSDictionary *userInfo = notification.userInfo;
     
     NSMutableDictionary *changes = [NSMutableDictionary new];

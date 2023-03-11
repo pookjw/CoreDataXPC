@@ -139,9 +139,7 @@
                 }
             }];
             
-            if ([remoteObjectProxy respondsToSelector:@selector(output_objectsDidChange:)]) {
-                [remoteObjectProxy output_objectsDidChange:changes];
-            }
+            [remoteObjectProxy output_objectsDidChange:changes];
         }];
     }];
 }

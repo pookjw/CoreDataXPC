@@ -94,9 +94,7 @@
             }
         }];
         
-        if ([remoteObject respondsToSelector:@selector(input_objectsDidChange:)]) {
-            [remoteObject input_objectsDidChange:changes];
-        }
+        [remoteObject input_objectsDidChange:changes];
     }];
 }
 
