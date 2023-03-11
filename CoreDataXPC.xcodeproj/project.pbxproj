@@ -120,6 +120,7 @@
 		4F65A1C329BCB0B900245A69 /* ViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewModel.m; sourceTree = "<group>"; };
 		4F65A1CA29BCBC8F00245A69 /* CollectionViewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewItem.h; sourceTree = "<group>"; };
 		4F65A1CB29BCBC8F00245A69 /* CollectionViewItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewItem.m; sourceTree = "<group>"; };
+		4F65A1CD29BCC28500245A69 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4FB940F929BBAD2C00A63A3A /* Publisher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Publisher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB940FB29BBAD2C00A63A3A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4FB940FC29BBAD2C00A63A3A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -216,6 +217,7 @@
 		4FB940E229BBAD1400A63A3A = {
 			isa = PBXGroup;
 			children = (
+				4F65A1CD29BCC28500245A69 /* README.md */,
 				4FB9412E29BBAD5100A63A3A /* Common */,
 				4FB940FA29BBAD2C00A63A3A /* Publisher */,
 				4FB9411129BBAD3B00A63A3A /* Receiver */,
