@@ -8,6 +8,7 @@
 #import "DataManger.h"
 #import "DataManagedObject.h"
 #import "PublisherXPCServiceProtocol.h"
+#import "XPCServiceName.h"
 
 @interface DataManger ()
 @property (readonly) NSEntityDescription *entityDescription;
@@ -111,13 +112,15 @@
 
 - (void)setupServiceConnection {
     [self.queue addBarrierBlock:^{
-        NSXPCConnection *serviceConnection = [[NSXPCConnection alloc] initWithServiceName:@"com.pookjw.Publisher.XPCService"];
+        NSXPCConnection *serviceConnection = [[NSXPCConnection alloc] initWithServiceName:kPublisherXPCServiceName];
         
         NSXPCInterface *remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(PublisherXPCServiceProtocol)];
+        
         [remoteObjectInterface setClasses:[NSSet setWithArray:@[NSDictionary.class, NSArray.class, NSString.class, NSURL.class]]
                               forSelector:@selector(objectsDidChange:withReply:)
                             argumentIndex:0
                                   ofReply:NO];
+        
         serviceConnection.remoteObjectInterface = remoteObjectInterface;
         
         serviceConnection.invalidationHandler = ^{
@@ -137,8 +140,8 @@
             }];
         };
         
-        [serviceConnection activate];
         self.serviceConnection = serviceConnection;
+        [serviceConnection activate];
         [serviceConnection release];
     }];
 }

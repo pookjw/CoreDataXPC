@@ -71,6 +71,7 @@
 /* Begin PBXFileReference section */
 		4F65A18329BC613300245A69 /* HelperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelperDelegate.h; sourceTree = "<group>"; };
 		4F65A18429BC613300245A69 /* HelperDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelperDelegate.m; sourceTree = "<group>"; };
+		4F65A18629BC756300245A69 /* XPCServiceName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPCServiceName.h; sourceTree = "<group>"; };
 		4FB940F929BBAD2C00A63A3A /* Publisher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Publisher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB940FB29BBAD2C00A63A3A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4FB940FC29BBAD2C00A63A3A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -285,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				4FEAC18329BC5E6A00F93DB0 /* XPCHelperProtocol.h */,
+				4F65A18629BC756300245A69 /* XPCServiceName.h */,
 			);
 			path = XPC;
 			sourceTree = "<group>";

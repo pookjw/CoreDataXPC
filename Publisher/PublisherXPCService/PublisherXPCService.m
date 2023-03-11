@@ -7,6 +7,7 @@
 
 #import "PublisherXPCService.h"
 #import "XPCHelperProtocol.h"
+#import "XPCServiceName.h"
 
 @interface PublisherXPCService ()
 @property (retain) NSXPCConnection *helperConnection; // only accessed by operations on self.queue
@@ -18,6 +19,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         [self setupQueue];
+        [self setupHelperConnection];
     }
     
     return self;
@@ -41,7 +43,8 @@
 
 - (void)setupHelperConnection {
     [self.queue addBarrierBlock:^{
-        NSXPCConnection *helperConnection = [[NSXPCConnection alloc] initWithMachServiceName:@"com.pookjw.CoreDataXPC.Helper" options:NSXPCConnectionPrivileged];
+        NSXPCConnection *helperConnection = [[NSXPCConnection alloc] initWithMachServiceName:kHelperXPCMachServiceName options:NSXPCConnectionPrivileged];
+        
         NSXPCInterface *remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(XPCHelperProtocol)];
         
         [remoteObjectInterface setClasses:[NSSet setWithArray:@[NSDictionary.class, NSArray.class, NSString.class, NSURL.class]]
@@ -68,8 +71,8 @@
             }];
         };
         
-        [helperConnection activate];
         self.helperConnection = helperConnection;
+        [helperConnection activate];
         [helperConnection release];
     }];
 }
