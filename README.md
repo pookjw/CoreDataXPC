@@ -2,7 +2,7 @@
 
 ![](diagram.svg)
 
-Core Data with XPC Mach Service on Cocoa
+Example of Core Data with XPC Mach Service on Cocoa
 
 ![](image.png)
 
