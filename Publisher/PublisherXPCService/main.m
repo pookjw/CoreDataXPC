@@ -9,10 +9,14 @@
 #import "ServiceDelegate.h"
 
 int main(int argc, const char *argv[]) {
+    NSAutoreleasePool *pool = [NSAutoreleasePool new];
+    
     ServiceDelegate *delegate = [ServiceDelegate new];
     NSXPCListener *listener = [NSXPCListener serviceListener];
     listener.delegate = delegate;
-    //    [delegate release];
     [listener activate];
+    [delegate release];
+    
+    [pool release];
     return EXIT_FAILURE;
 }

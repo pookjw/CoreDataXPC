@@ -121,11 +121,11 @@
         serviceConnection.remoteObjectInterface = remoteObjectInterface;
         
         serviceConnection.invalidationHandler = ^{
-            // Release objects captured by block.
-            serviceConnection.invalidationHandler = nil;
-            static NSUInteger retryCount = 0;
-            
             [self.queue addBarrierBlock:^{
+                // Release objects captured by block.
+                serviceConnection.invalidationHandler = nil;
+                static NSUInteger retryCount = 0;
+                
                 retryCount += 1;
                 NSLog(@"Invaldated XPC Connection, retrying... (%ld)", retryCount);
                 

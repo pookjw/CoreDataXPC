@@ -1,6 +1,6 @@
 //
-//  PublisherXPCServiceProtocol.h
-//  PublisherXPCService
+//  XPCHelperProtocol.h
+//  CoreDataXPC
 //
 //  Created by Jinwoo Kim on 3/11/23.
 //
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol PublisherXPCServiceProtocol <NSObject>
+@protocol XPCHelperProtocol <NSObject>
 - (void)objectsDidChange:(NSDictionary<NSString *, NSURL *> *)changes withReply:(void (^)(void))reply;
 @end
 

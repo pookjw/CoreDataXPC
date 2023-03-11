@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F65A18529BC613300245A69 /* HelperDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A18429BC613300245A69 /* HelperDelegate.m */; };
 		4FB940FD29BBAD2C00A63A3A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB940FC29BBAD2C00A63A3A /* AppDelegate.m */; };
 		4FB9410029BBAD2C00A63A3A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB940FF29BBAD2C00A63A3A /* ViewController.m */; };
 		4FB9410229BBAD2C00A63A3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB9410129BBAD2C00A63A3A /* Assets.xcassets */; };
@@ -68,6 +69,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F65A18329BC613300245A69 /* HelperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelperDelegate.h; sourceTree = "<group>"; };
+		4F65A18429BC613300245A69 /* HelperDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelperDelegate.m; sourceTree = "<group>"; };
 		4FB940F929BBAD2C00A63A3A /* Publisher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Publisher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB940FB29BBAD2C00A63A3A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4FB940FC29BBAD2C00A63A3A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -111,6 +114,7 @@
 		4FB9417A29BBD7B100A63A3A /* PublisherXPCService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PublisherXPCService.entitlements; sourceTree = "<group>"; };
 		4FB9418129BBE3B500A63A3A /* ServiceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceDelegate.h; sourceTree = "<group>"; };
 		4FB9418229BBE3B500A63A3A /* ServiceDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceDelegate.m; sourceTree = "<group>"; };
+		4FEAC18329BC5E6A00F93DB0 /* XPCHelperProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPCHelperProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +207,8 @@
 		4FB9412829BBAD4800A63A3A /* CoreDataXPCHelper */ = {
 			isa = PBXGroup;
 			children = (
+				4F65A18329BC613300245A69 /* HelperDelegate.h */,
+				4F65A18429BC613300245A69 /* HelperDelegate.m */,
 				4FB9412929BBAD4800A63A3A /* main.m */,
 			);
 			path = CoreDataXPCHelper;
@@ -214,7 +220,7 @@
 				4FB9414E29BBCFBC00A63A3A /* Category */,
 				4FB9413B29BBB90300A63A3A /* Menu */,
 				4FB9413A29BBB8FD00A63A3A /* CoreData */,
-				4FB9415729BBD74600A63A3A /* XPC */,
+				4FEAC18229BC5C0400F93DB0 /* XPC */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -260,13 +266,6 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		4FB9415729BBD74600A63A3A /* XPC */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = XPC;
-			sourceTree = "<group>";
-		};
 		4FB9417229BBD7B100A63A3A /* PublisherXPCService */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +279,14 @@
 				4FB9417A29BBD7B100A63A3A /* PublisherXPCService.entitlements */,
 			);
 			path = PublisherXPCService;
+			sourceTree = "<group>";
+		};
+		4FEAC18229BC5C0400F93DB0 /* XPC */ = {
+			isa = PBXGroup;
+			children = (
+				4FEAC18329BC5E6A00F93DB0 /* XPCHelperProtocol.h */,
+			);
+			path = XPC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FB9412A29BBAD4800A63A3A /* main.m in Sources */,
+				4F65A18529BC613300245A69 /* HelperDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,6 +722,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.CoreDataXPC.Helper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -724,6 +733,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.CoreDataXPC.Helper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

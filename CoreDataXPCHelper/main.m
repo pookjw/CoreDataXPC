@@ -6,11 +6,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HelperDelegate.h"
 
 int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
-    }
-    return 0;
+    NSAutoreleasePool *pool = [NSAutoreleasePool new];
+    
+    HelperDelegate *delegate = [HelperDelegate new];
+    NSXPCListener *listener = [[NSXPCListener alloc] initWithMachServiceName:@"com.pookjw.CoreDataXPC.Helper"];
+    listener.delegate = delegate;
+    [listener activate];
+    [delegate release];
+    [listener release];
+    
+    [pool release];
+    return EXIT_FAILURE;
 }
