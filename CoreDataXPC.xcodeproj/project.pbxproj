@@ -18,6 +18,10 @@
 		4F65A1BF29BCAE8800245A69 /* NSXPCInterface+CoreDataXPCInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A1BC29BCAD9800245A69 /* NSXPCInterface+CoreDataXPCInterface.m */; };
 		4F65A1C029BCAE8800245A69 /* NSXPCInterface+CoreDataXPCInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A1BC29BCAD9800245A69 /* NSXPCInterface+CoreDataXPCInterface.m */; };
 		4F65A1C129BCAE8900245A69 /* NSXPCInterface+CoreDataXPCInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A1BC29BCAD9800245A69 /* NSXPCInterface+CoreDataXPCInterface.m */; };
+		4F65A1C429BCB0B900245A69 /* ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A1C329BCB0B900245A69 /* ViewModel.m */; };
+		4F65A1C529BCB0FF00245A69 /* EditMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9414529BBBB0200A63A3A /* EditMenuItem.m */; };
+		4F65A1C629BCB0FF00245A69 /* BaseMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9413D29BBB93200A63A3A /* BaseMenu.m */; };
+		4F65A1CC29BCBC8F00245A69 /* CollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A1CB29BCBC8F00245A69 /* CollectionViewItem.m */; };
 		4FB940FD29BBAD2C00A63A3A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB940FC29BBAD2C00A63A3A /* AppDelegate.m */; };
 		4FB9410029BBAD2C00A63A3A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB940FF29BBAD2C00A63A3A /* ViewController.m */; };
 		4FB9410229BBAD2C00A63A3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB9410129BBAD2C00A63A3A /* Assets.xcassets */; };
@@ -112,6 +116,10 @@
 		4F65A1BA29BCA6AC00245A69 /* CoreDataXPCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataXPCProtocol.h; sourceTree = "<group>"; };
 		4F65A1BB29BCAD9200245A69 /* NSXPCInterface+CoreDataXPCInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSXPCInterface+CoreDataXPCInterface.h"; sourceTree = "<group>"; };
 		4F65A1BC29BCAD9800245A69 /* NSXPCInterface+CoreDataXPCInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSXPCInterface+CoreDataXPCInterface.m"; sourceTree = "<group>"; };
+		4F65A1C229BCB0B900245A69 /* ViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewModel.h; sourceTree = "<group>"; };
+		4F65A1C329BCB0B900245A69 /* ViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewModel.m; sourceTree = "<group>"; };
+		4F65A1CA29BCBC8F00245A69 /* CollectionViewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewItem.h; sourceTree = "<group>"; };
+		4F65A1CB29BCBC8F00245A69 /* CollectionViewItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewItem.m; sourceTree = "<group>"; };
 		4FB940F929BBAD2C00A63A3A /* Publisher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Publisher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB940FB29BBAD2C00A63A3A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4FB940FC29BBAD2C00A63A3A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -256,6 +264,10 @@
 				4FB9411329BBAD3B00A63A3A /* AppDelegate.m */,
 				4FB9411529BBAD3B00A63A3A /* ViewController.h */,
 				4FB9411629BBAD3B00A63A3A /* ViewController.m */,
+				4F65A1C229BCB0B900245A69 /* ViewModel.h */,
+				4F65A1C329BCB0B900245A69 /* ViewModel.m */,
+				4F65A1CA29BCBC8F00245A69 /* CollectionViewItem.h */,
+				4F65A1CB29BCBC8F00245A69 /* CollectionViewItem.m */,
 				4F65A1B729BC970600245A69 /* ReceiverXPCManager.h */,
 				4F65A1B829BC970600245A69 /* ReceiverXPCManager.m */,
 				4FB9411829BBAD3C00A63A3A /* Assets.xcassets */,
@@ -558,16 +570,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F65A1C629BCB0FF00245A69 /* BaseMenu.m in Sources */,
 				4FB9413629BBB3BF00A63A3A /* NSTextField+ApplyLabelStyle.m in Sources */,
 				4FB9411729BBAD3B00A63A3A /* ViewController.m in Sources */,
 				4FB9411E29BBAD3C00A63A3A /* main.m in Sources */,
 				4FB9414D29BBBEF900A63A3A /* DataManagedObject.m in Sources */,
 				4F65A1B929BC970600245A69 /* ReceiverXPCManager.m in Sources */,
+				4F65A1C429BCB0B900245A69 /* ViewModel.m in Sources */,
 				4FB9414329BBB96700A63A3A /* AppMenuItem.m in Sources */,
 				4FB9415229BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm in Sources */,
+				4F65A1CC29BCBC8F00245A69 /* CollectionViewItem.m in Sources */,
 				4F65A1BD29BCAD9800245A69 /* NSXPCInterface+CoreDataXPCInterface.m in Sources */,
 				4FB9411429BBAD3B00A63A3A /* AppDelegate.m in Sources */,
 				4FB9413229BBAD6D00A63A3A /* DataManager.m in Sources */,
+				4F65A1C529BCB0FF00245A69 /* EditMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

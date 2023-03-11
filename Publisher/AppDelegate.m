@@ -47,7 +47,4 @@
     [mainMenu release];
 }
 
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
-}
-
 @end

@@ -1,6 +1,6 @@
 //
 //  NSTextField+ApplyLabelStyle.h
-//  CoreDataXPC
+//  Receiver
 //
 //  Created by Jinwoo Kim on 3/11/23.
 //

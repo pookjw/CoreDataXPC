@@ -1,6 +1,6 @@
 //
 //  NSTextField+ApplyLabelStyle.m
-//  Publisher
+//  Receiver
 //
 //  Created by Jinwoo Kim on 3/11/23.
 //
