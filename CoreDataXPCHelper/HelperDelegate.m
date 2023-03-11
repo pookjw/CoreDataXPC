@@ -6,9 +6,10 @@
 //
 
 #import "HelperDelegate.h"
-#import "XPCHelperProtocol.h"
+#import "XPCHelperInputProtocol.h"
+#import "XPCHelperOutputProtocol.h"
 
-@interface HelperDelegate () <XPCHelperProtocol>
+@interface HelperDelegate () <XPCHelperInputProtocol>
 @property (retain) NSMutableSet<NSXPCConnection *> *connections; // only accessed by operations on self.queue
 @property (retain) NSOperationQueue *queue;
 @end
@@ -54,15 +55,24 @@
 }
 
 - (BOOL)listener:(NSXPCListener *)listener shouldAcceptNewConnection:(NSXPCConnection *)newConnection {
-    NSXPCInterface *exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(XPCHelperProtocol)];
+    NSXPCInterface *exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(XPCHelperInputProtocol)];
     
     [exportedInterface setClasses:[NSSet setWithArray:@[NSDictionary.class, NSArray.class, NSString.class, NSURL.class]]
-                      forSelector:@selector(objectsDidChange:withReply:)
+                      forSelector:@selector(input_objectsDidChange:withReply:)
                     argumentIndex:0
                           ofReply:NO];
     
     newConnection.exportedInterface = exportedInterface;
     newConnection.exportedObject = self;
+    
+    NSXPCInterface *remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(XPCHelperOutputProtocol)];
+    
+    [remoteObjectInterface setClasses:[NSSet setWithArray:@[NSDictionary.class, NSArray.class, NSString.class, NSURL.class]]
+                      forSelector:@selector(output_objectsDidChange:)
+                    argumentIndex:0
+                          ofReply:NO];
+    
+    newConnection.remoteObjectInterface = remoteObjectInterface;
     
     newConnection.invalidationHandler = ^{
         newConnection.invalidationHandler = nil;
@@ -80,8 +90,17 @@
     return YES;
 }
 
-- (void)objectsDidChange:(NSDictionary<NSString *,NSURL *> *)changes withReply:(void (^)(void))reply {
-    
+- (void)input_objectsDidChange:(NSDictionary<NSString *,NSURL *> *)changes withReply:(void (^)(void))reply {
+    [self.queue addBarrierBlock:^{
+        [self.connections enumerateObjectsUsingBlock:^(NSXPCConnection * _Nonnull obj, BOOL * _Nonnull stop) {
+            if ([obj conformsToProtocol:@protocol(XPCHelperOutputProtocol)]) {
+                id<XPCHelperOutputProtocol> remoteObjectProxy = obj.remoteObjectProxy;
+                [remoteObjectProxy output_objectsDidChange:changes];
+            }
+        }];
+        
+        reply();
+    }];
 }
 
 @end

@@ -6,7 +6,7 @@
 //
 
 #import "PublisherXPCService.h"
-#import "XPCHelperProtocol.h"
+#import "XPCHelperInputProtocol.h"
 #import "XPCServiceName.h"
 
 @interface PublisherXPCService ()
@@ -45,10 +45,10 @@
     [self.queue addBarrierBlock:^{
         NSXPCConnection *helperConnection = [[NSXPCConnection alloc] initWithMachServiceName:kHelperXPCMachServiceName options:NSXPCConnectionPrivileged];
         
-        NSXPCInterface *remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(XPCHelperProtocol)];
+        NSXPCInterface *remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(XPCHelperInputProtocol)];
         
         [remoteObjectInterface setClasses:[NSSet setWithArray:@[NSDictionary.class, NSArray.class, NSString.class, NSURL.class]]
-                              forSelector:@selector(objectsDidChange:withReply:)
+                              forSelector:@selector(input_objectsDidChange:withReply:)
                             argumentIndex:0
                                   ofReply:NO];
         
@@ -79,13 +79,13 @@
 
 - (void)objectsDidChange:(NSDictionary<NSString *,NSURL *> *)changes withReply:(void (^)(void))reply {
     [self.queue addBarrierBlock:^{
-        id<XPCHelperProtocol> remoteObject = [self.helperConnection remoteObjectProxyWithErrorHandler:^(NSError * _Nonnull error) {
+        id<XPCHelperInputProtocol> remoteObject = [self.helperConnection remoteObjectProxyWithErrorHandler:^(NSError * _Nonnull error) {
             if (error.code != 4097) {
                 [NSException raise:NSInternalInconsistencyException format:@"%@", error];
             }
         }];
         
-        [remoteObject objectsDidChange:changes withReply:reply];
+        [remoteObject input_objectsDidChange:changes withReply:reply];
     }];
 }
 
