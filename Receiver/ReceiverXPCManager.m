@@ -104,7 +104,9 @@
 }
 
 - (void)output_objectsDidChange:(NSDictionary<NSString *,NSURL *> *)changes {
-    NSLog(@"%@", changes);
+    [self.dataManager.queue addBarrierBlock:^{
+        [NSManagedObjectContext mergeChangesFromRemoteContextSave:changes intoContexts:@[DataManager.sharedInstance.context]];
+    }];
 }
 
 - (void)ready {
