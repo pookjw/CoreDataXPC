@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "BaseMenu.h"
+#import "PublisherXPCManager.h"
 
 @interface AppDelegate ()
 @property (retain) NSWindow *window;
@@ -21,6 +22,8 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [PublisherXPCManager.sharedInstance run];
+    
     NSWindow *window = [NSWindow new];
     
     window.styleMask = NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskFullSizeContentView | NSWindowStyleMaskResizable | NSWindowStyleMaskTitled;

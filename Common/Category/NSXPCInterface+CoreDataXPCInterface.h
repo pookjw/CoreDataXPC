@@ -1,5 +1,5 @@
 //
-//  ServiceDelegate.h
+//  NSXPCInterface+CoreDataXPCInterface.h
 //  CoreDataXPC
 //
 //  Created by Jinwoo Kim on 3/11/23.
@@ -9,7 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ServiceDelegate : NSObject <NSXPCListenerDelegate>
+@interface NSXPCInterface (CoreDataXPCInterface)
++ (NSXPCInterface *)interfaceWithCoreDataXPC;
 @end
 
 NS_ASSUME_NONNULL_END

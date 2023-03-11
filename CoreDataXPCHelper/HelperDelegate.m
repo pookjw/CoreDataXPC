@@ -6,10 +6,10 @@
 //
 
 #import "HelperDelegate.h"
-#import "XPCHelperInputProtocol.h"
-#import "XPCHelperOutputProtocol.h"
+#import "CoreDataXPCProtocol.h"
+#import "NSXPCInterface+CoreDataXPCInterface.h"
 
-@interface HelperDelegate () <XPCHelperInputProtocol>
+@interface HelperDelegate () <CoreDataXPCProtocol>
 @property (retain) NSMutableSet<NSXPCConnection *> *connections; // only accessed by operations on self.queue
 @property (retain) NSOperationQueue *queue;
 @end
@@ -18,8 +18,8 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        [self setupConnections];
         [self setupQueue];
+        [self setupConnections];
     }
     
     return self;
@@ -40,12 +40,6 @@
     [super dealloc];
 }
 
-- (void)setupConnections {
-    NSMutableSet<NSXPCConnection *> *connections = [NSMutableSet<NSXPCConnection *> new];
-    self.connections = connections;
-    [connections release];
-}
-
 - (void)setupQueue {
     NSOperationQueue *queue = [NSOperationQueue new];
     queue.maxConcurrentOperationCount = 1;
@@ -54,25 +48,20 @@
     [queue release];
 }
 
+- (void)setupConnections {
+    [self.queue addBarrierBlock:^{
+        NSMutableSet<NSXPCConnection *> *connections = [NSMutableSet<NSXPCConnection *> new];
+        self.connections = connections;
+        [connections release];
+    }];
+}
+
 - (BOOL)listener:(NSXPCListener *)listener shouldAcceptNewConnection:(NSXPCConnection *)newConnection {
-    NSXPCInterface *exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(XPCHelperInputProtocol)];
+    NSXPCInterface *interface = [NSXPCInterface interfaceWithCoreDataXPC];
     
-    [exportedInterface setClasses:[NSSet setWithArray:@[NSDictionary.class, NSArray.class, NSString.class, NSURL.class]]
-                      forSelector:@selector(input_objectsDidChange:withReply:)
-                    argumentIndex:0
-                          ofReply:NO];
-    
-    newConnection.exportedInterface = exportedInterface;
+    newConnection.exportedInterface = interface;
     newConnection.exportedObject = self;
-    
-    NSXPCInterface *remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(XPCHelperOutputProtocol)];
-    
-    [remoteObjectInterface setClasses:[NSSet setWithArray:@[NSDictionary.class, NSArray.class, NSString.class, NSURL.class]]
-                      forSelector:@selector(output_objectsDidChange:)
-                    argumentIndex:0
-                          ofReply:NO];
-    
-    newConnection.remoteObjectInterface = remoteObjectInterface;
+    newConnection.remoteObjectInterface = interface;
     
     newConnection.invalidationHandler = ^{
         newConnection.invalidationHandler = nil;
@@ -90,17 +79,28 @@
     return YES;
 }
 
-- (void)input_objectsDidChange:(NSDictionary<NSString *,NSURL *> *)changes withReply:(void (^)(void))reply {
+- (void)input_objectsDidChange:(NSDictionary<NSString *,NSURL *> *)changes {
     [self.queue addBarrierBlock:^{
         [self.connections enumerateObjectsUsingBlock:^(NSXPCConnection * _Nonnull obj, BOOL * _Nonnull stop) {
-            if ([obj conformsToProtocol:@protocol(XPCHelperOutputProtocol)]) {
-                id<XPCHelperOutputProtocol> remoteObjectProxy = obj.remoteObjectProxy;
+            id<CoreDataXPCProtocol> remoteObjectProxy = [obj remoteObjectProxyWithErrorHandler:^(NSError * _Nonnull error) {
+                if (error.code != 4097) {
+                    [NSException raise:NSInternalInconsistencyException format:@"%@", error];
+                }
+            }];
+            
+            if ([remoteObjectProxy respondsToSelector:@selector(output_objectsDidChange:)]) {
                 [remoteObjectProxy output_objectsDidChange:changes];
             }
         }];
-        
-        reply();
     }];
+}
+
+- (void)output_objectsDidChange:(NSDictionary<NSString *,NSURL *> *)changes {
+    
+}
+
+- (void)ready {
+    
 }
 
 @end

@@ -1,25 +1,27 @@
 //
-//  PublisherXPCService.m
-//  PublisherXPCService
+//  ReceiverXPCService.m
+//  ReceiverXPCService
 //
 //  Created by Jinwoo Kim on 3/11/23.
 //
 
-#import "PublisherXPCService.h"
-#import "XPCServiceName.h"
+#import "ReceiverXPCService.h"
 #import "CoreDataXPCProtocol.h"
+#import "XPCServiceName.h"
 #import "NSXPCInterface+CoreDataXPCInterface.h"
 
-@interface PublisherXPCService () <CoreDataXPCProtocol>
+@interface ReceiverXPCService () <CoreDataXPCProtocol>
 @property (retain) NSXPCConnection *helperConnection; // only accessed by operations on self.queue
+@property (retain) NSMutableSet<NSXPCConnection *> *connections;
 @property (retain) NSOperationQueue *queue;
 @end
 
-@implementation PublisherXPCService
+@implementation ReceiverXPCService
 
 - (instancetype)init {
     if (self = [super init]) {
         [self setupQueue];
+        [self setupConnections];
         [self setupHelperConnection];
     }
     
@@ -29,6 +31,15 @@
 - (void)dealloc {
     [_helperConnection invalidate];
     [_helperConnection release];
+    
+    // `-[NSXPCConnection invalidationHandler]` mutates self.connections, it will be error while running enumeration block.
+    NSSet<NSXPCConnection *> *connections = [_connections copy];
+    [connections enumerateObjectsUsingBlock:^(NSXPCConnection * _Nonnull obj, BOOL * _Nonnull stop) {
+        [obj invalidate];
+    }];
+    [connections release];
+    [_connections release];
+    
     [_queue cancelAllOperations];
     [_queue release];
     [super dealloc];
@@ -40,6 +51,14 @@
     queue.qualityOfService = NSQualityOfServiceUtility;
     self.queue = queue;
     [queue release];
+}
+
+- (void)setupConnections {
+    [self.queue addBarrierBlock:^{
+        NSMutableSet<NSXPCConnection *> *connections = [NSMutableSet<NSXPCConnection *> new];
+        self.connections = connections;
+        [connections release];
+    }];
 }
 
 - (void)setupHelperConnection {
@@ -71,37 +90,60 @@
         
         self.helperConnection = helperConnection;
         [helperConnection activate];
-        [helperConnection release];
-    }];
-}
-
-- (BOOL)listener:(NSXPCListener *)listener shouldAcceptNewConnection:(NSXPCConnection *)newConnection {
-    NSXPCInterface *exportedInterface = [NSXPCInterface interfaceWithCoreDataXPC];
-    
-    newConnection.exportedInterface = exportedInterface;
-    newConnection.exportedObject = self;
-    
-    [newConnection activate];
-    
-    return YES;
-}
-
-- (void)input_objectsDidChange:(NSDictionary<NSString *,NSURL *> *)changes {
-    [self.queue addBarrierBlock:^{
-        id<CoreDataXPCProtocol> remoteObject = [self.helperConnection remoteObjectProxyWithErrorHandler:^(NSError * _Nonnull error) {
+        
+        id<CoreDataXPCProtocol> remoteObjectProxy = [helperConnection remoteObjectProxyWithErrorHandler:^(NSError * _Nonnull error) {
             if (error.code != 4097) {
                 [NSException raise:NSInternalInconsistencyException format:@"%@", error];
             }
         }];
         
-        if ([remoteObject respondsToSelector:@selector(input_objectsDidChange:)]) {
-            [remoteObject input_objectsDidChange:changes];
-        }
+        [remoteObjectProxy ready];
+        
+        [helperConnection release];
     }];
 }
 
-- (void)output_objectsDidChange:(NSDictionary<NSString *,NSURL *> *)changes {
+- (BOOL)listener:(NSXPCListener *)listener shouldAcceptNewConnection:(NSXPCConnection *)newConnection {
+    NSXPCInterface *interface = [NSXPCInterface interfaceWithCoreDataXPC];
     
+    newConnection.exportedInterface = interface;
+    newConnection.exportedObject = self;
+    newConnection.remoteObjectInterface = interface;
+    
+    newConnection.invalidationHandler = ^{
+        newConnection.invalidationHandler = nil;
+        
+        [self.queue addBarrierBlock:^{
+            [self.connections removeObject:newConnection];
+        }];
+    };
+    
+    [self.queue addBarrierBlock:^{
+        [self.connections addObject:newConnection];
+        [newConnection activate];
+    }];
+    
+    return YES;
+}
+
+- (void)input_objectsDidChange:(NSDictionary<NSString *,NSURL *> *)changes {
+    
+}
+
+- (void)output_objectsDidChange:(NSDictionary<NSString *,NSURL *> *)changes {
+    [self.queue addBarrierBlock:^{
+        [self.connections enumerateObjectsUsingBlock:^(NSXPCConnection * _Nonnull obj, BOOL * _Nonnull stop) {
+            id<CoreDataXPCProtocol> remoteObjectProxy = [obj remoteObjectProxyWithErrorHandler:^(NSError * _Nonnull error) {
+                if (error.code != 4097) {
+                    [NSException raise:NSInternalInconsistencyException format:@"%@", error];
+                }
+            }];
+            
+            if ([remoteObjectProxy respondsToSelector:@selector(output_objectsDidChange:)]) {
+                [remoteObjectProxy output_objectsDidChange:changes];
+            }
+        }];
+    }];
 }
 
 - (void)ready {

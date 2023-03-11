@@ -6,7 +6,7 @@
 //
 
 #import "ViewModel.h"
-#import "DataManger.h"
+#import "DataManager.h"
 #import "DataManagedObject.h"
 
 @interface ViewModel ()
@@ -15,8 +15,8 @@
 @implementation ViewModel
 
 - (void)publishWithText:(NSString *)text completionHandler:(void (^)(NSError * _Nullable error))completionHandler {
-    [DataManger.sharedInstance.queue addBarrierBlock:^{
-        NSManagedObjectContext *context = DataManger.sharedInstance.context;
+    [DataManager.sharedInstance.queue addBarrierBlock:^{
+        NSManagedObjectContext *context = DataManager.sharedInstance.context;
         DataManagedObject *dataManagedObject = [[DataManagedObject alloc] initWithContext:context];
         dataManagedObject.text = text;
         

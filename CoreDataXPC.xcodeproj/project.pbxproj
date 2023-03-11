@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		4F65A18529BC613300245A69 /* HelperDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A18429BC613300245A69 /* HelperDelegate.m */; };
+		4F65A1A529BC890700245A69 /* ReceiverXPCService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A1A429BC890700245A69 /* ReceiverXPCService.m */; };
+		4F65A1A729BC890700245A69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A1A629BC890700245A69 /* main.m */; };
+		4F65A1AC29BC890700245A69 /* ReceiverXPCService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 4F65A1A029BC890700245A69 /* ReceiverXPCService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4F65A1B629BC947B00245A69 /* PublisherXPCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A1B529BC947B00245A69 /* PublisherXPCManager.m */; };
+		4F65A1B929BC970600245A69 /* ReceiverXPCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A1B829BC970600245A69 /* ReceiverXPCManager.m */; };
+		4F65A1BD29BCAD9800245A69 /* NSXPCInterface+CoreDataXPCInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A1BC29BCAD9800245A69 /* NSXPCInterface+CoreDataXPCInterface.m */; };
+		4F65A1BE29BCAE8700245A69 /* NSXPCInterface+CoreDataXPCInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A1BC29BCAD9800245A69 /* NSXPCInterface+CoreDataXPCInterface.m */; };
+		4F65A1BF29BCAE8800245A69 /* NSXPCInterface+CoreDataXPCInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A1BC29BCAD9800245A69 /* NSXPCInterface+CoreDataXPCInterface.m */; };
+		4F65A1C029BCAE8800245A69 /* NSXPCInterface+CoreDataXPCInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A1BC29BCAD9800245A69 /* NSXPCInterface+CoreDataXPCInterface.m */; };
+		4F65A1C129BCAE8900245A69 /* NSXPCInterface+CoreDataXPCInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65A1BC29BCAD9800245A69 /* NSXPCInterface+CoreDataXPCInterface.m */; };
 		4FB940FD29BBAD2C00A63A3A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB940FC29BBAD2C00A63A3A /* AppDelegate.m */; };
 		4FB9410029BBAD2C00A63A3A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB940FF29BBAD2C00A63A3A /* ViewController.m */; };
 		4FB9410229BBAD2C00A63A3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB9410129BBAD2C00A63A3A /* Assets.xcassets */; };
@@ -17,8 +27,8 @@
 		4FB9411929BBAD3C00A63A3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB9411829BBAD3C00A63A3A /* Assets.xcassets */; };
 		4FB9411E29BBAD3C00A63A3A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9411D29BBAD3C00A63A3A /* main.m */; };
 		4FB9412A29BBAD4800A63A3A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9412929BBAD4800A63A3A /* main.m */; };
-		4FB9413129BBAD6900A63A3A /* DataManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9413029BBAD6900A63A3A /* DataManger.m */; };
-		4FB9413229BBAD6D00A63A3A /* DataManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9413029BBAD6900A63A3A /* DataManger.m */; };
+		4FB9413129BBAD6900A63A3A /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9413029BBAD6900A63A3A /* DataManager.m */; };
+		4FB9413229BBAD6D00A63A3A /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9413029BBAD6900A63A3A /* DataManager.m */; };
 		4FB9413629BBB3BF00A63A3A /* NSTextField+ApplyLabelStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9413429BBB3A900A63A3A /* NSTextField+ApplyLabelStyle.m */; };
 		4FB9413E29BBB93200A63A3A /* BaseMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9413D29BBB93200A63A3A /* BaseMenu.m */; };
 		4FB9414229BBB94900A63A3A /* AppMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9414129BBB94900A63A3A /* AppMenuItem.m */; };
@@ -32,10 +42,16 @@
 		4FB9417629BBD7B100A63A3A /* PublisherXPCService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9417529BBD7B100A63A3A /* PublisherXPCService.m */; };
 		4FB9417829BBD7B100A63A3A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9417729BBD7B100A63A3A /* main.m */; };
 		4FB9417D29BBD7B100A63A3A /* PublisherXPCService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 4FB9417129BBD7B000A63A3A /* PublisherXPCService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		4FB9418529BBE3EF00A63A3A /* ServiceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9418229BBE3B500A63A3A /* ServiceDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4F65A1AA29BC890700245A69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FB940E329BBAD1400A63A3A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F65A19F29BC890700245A69;
+			remoteInfo = ReceiverXPCService;
+		};
 		4FB9417B29BBD7B100A63A3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4FB940E329BBAD1400A63A3A /* Project object */;
@@ -46,6 +62,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		4F65A1B029BC890700245A69 /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				4F65A1AC29BC890700245A69 /* ReceiverXPCService.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4FB9412529BBAD4800A63A3A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -72,7 +99,19 @@
 		4F65A18329BC613300245A69 /* HelperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelperDelegate.h; sourceTree = "<group>"; };
 		4F65A18429BC613300245A69 /* HelperDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelperDelegate.m; sourceTree = "<group>"; };
 		4F65A18629BC756300245A69 /* XPCServiceName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPCServiceName.h; sourceTree = "<group>"; };
-		4F65A19B29BC870700245A69 /* XPCHelperOutputProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPCHelperOutputProtocol.h; sourceTree = "<group>"; };
+		4F65A1A029BC890700245A69 /* ReceiverXPCService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = ReceiverXPCService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F65A1A329BC890700245A69 /* ReceiverXPCService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceiverXPCService.h; sourceTree = "<group>"; };
+		4F65A1A429BC890700245A69 /* ReceiverXPCService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceiverXPCService.m; sourceTree = "<group>"; };
+		4F65A1A629BC890700245A69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4F65A1A829BC890700245A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F65A1A929BC890700245A69 /* ReceiverXPCService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReceiverXPCService.entitlements; sourceTree = "<group>"; };
+		4F65A1B429BC947B00245A69 /* PublisherXPCManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublisherXPCManager.h; sourceTree = "<group>"; };
+		4F65A1B529BC947B00245A69 /* PublisherXPCManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PublisherXPCManager.m; sourceTree = "<group>"; };
+		4F65A1B729BC970600245A69 /* ReceiverXPCManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceiverXPCManager.h; sourceTree = "<group>"; };
+		4F65A1B829BC970600245A69 /* ReceiverXPCManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceiverXPCManager.m; sourceTree = "<group>"; };
+		4F65A1BA29BCA6AC00245A69 /* CoreDataXPCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataXPCProtocol.h; sourceTree = "<group>"; };
+		4F65A1BB29BCAD9200245A69 /* NSXPCInterface+CoreDataXPCInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSXPCInterface+CoreDataXPCInterface.h"; sourceTree = "<group>"; };
+		4F65A1BC29BCAD9800245A69 /* NSXPCInterface+CoreDataXPCInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSXPCInterface+CoreDataXPCInterface.m"; sourceTree = "<group>"; };
 		4FB940F929BBAD2C00A63A3A /* Publisher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Publisher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB940FB29BBAD2C00A63A3A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4FB940FC29BBAD2C00A63A3A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -91,8 +130,8 @@
 		4FB9411F29BBAD3C00A63A3A /* Receiver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Receiver.entitlements; sourceTree = "<group>"; };
 		4FB9412729BBAD4800A63A3A /* CoreDataXPCHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CoreDataXPCHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB9412929BBAD4800A63A3A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4FB9412F29BBAD6900A63A3A /* DataManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManger.h; sourceTree = "<group>"; };
-		4FB9413029BBAD6900A63A3A /* DataManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManger.m; sourceTree = "<group>"; };
+		4FB9412F29BBAD6900A63A3A /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		4FB9413029BBAD6900A63A3A /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		4FB9413329BBB3A400A63A3A /* NSTextField+ApplyLabelStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTextField+ApplyLabelStyle.h"; sourceTree = "<group>"; };
 		4FB9413429BBB3A900A63A3A /* NSTextField+ApplyLabelStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+ApplyLabelStyle.m"; sourceTree = "<group>"; };
 		4FB9413C29BBB93200A63A3A /* BaseMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseMenu.h; sourceTree = "<group>"; };
@@ -108,18 +147,21 @@
 		4FB9414F29BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Foundation_IvarDescription.h"; sourceTree = "<group>"; };
 		4FB9415029BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSObject+Foundation_IvarDescription.mm"; sourceTree = "<group>"; };
 		4FB9417129BBD7B000A63A3A /* PublisherXPCService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = PublisherXPCService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
-		4FB9417329BBD7B100A63A3A /* PublisherXPCServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublisherXPCServiceProtocol.h; sourceTree = "<group>"; };
 		4FB9417429BBD7B100A63A3A /* PublisherXPCService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublisherXPCService.h; sourceTree = "<group>"; };
 		4FB9417529BBD7B100A63A3A /* PublisherXPCService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PublisherXPCService.m; sourceTree = "<group>"; };
 		4FB9417729BBD7B100A63A3A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4FB9417929BBD7B100A63A3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FB9417A29BBD7B100A63A3A /* PublisherXPCService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PublisherXPCService.entitlements; sourceTree = "<group>"; };
-		4FB9418129BBE3B500A63A3A /* ServiceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceDelegate.h; sourceTree = "<group>"; };
-		4FB9418229BBE3B500A63A3A /* ServiceDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceDelegate.m; sourceTree = "<group>"; };
-		4FEAC18329BC5E6A00F93DB0 /* XPCHelperInputProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPCHelperInputProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4F65A19D29BC890700245A69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4FB940F629BBAD2C00A63A3A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -151,6 +193,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F65A1A129BC890700245A69 /* ReceiverXPCService */ = {
+			isa = PBXGroup;
+			children = (
+				4F65A1A329BC890700245A69 /* ReceiverXPCService.h */,
+				4F65A1A429BC890700245A69 /* ReceiverXPCService.m */,
+				4F65A1A629BC890700245A69 /* main.m */,
+				4F65A1A829BC890700245A69 /* Info.plist */,
+				4F65A1A929BC890700245A69 /* ReceiverXPCService.entitlements */,
+			);
+			path = ReceiverXPCService;
+			sourceTree = "<group>";
+		};
 		4FB940E229BBAD1400A63A3A = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +223,7 @@
 				4FB9411029BBAD3B00A63A3A /* Receiver.app */,
 				4FB9412729BBAD4800A63A3A /* CoreDataXPCHelper */,
 				4FB9417129BBD7B000A63A3A /* PublisherXPCService.xpc */,
+				4F65A1A029BC890700245A69 /* ReceiverXPCService.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -182,6 +237,8 @@
 				4FB940FF29BBAD2C00A63A3A /* ViewController.m */,
 				4FB9414729BBBCA200A63A3A /* ViewModel.h */,
 				4FB9414829BBBCA200A63A3A /* ViewModel.m */,
+				4F65A1B429BC947B00245A69 /* PublisherXPCManager.h */,
+				4F65A1B529BC947B00245A69 /* PublisherXPCManager.m */,
 				4FB9410129BBAD2C00A63A3A /* Assets.xcassets */,
 				4FB9410629BBAD2C00A63A3A /* main.m */,
 				4FB9410829BBAD2C00A63A3A /* Publisher.entitlements */,
@@ -199,9 +256,12 @@
 				4FB9411329BBAD3B00A63A3A /* AppDelegate.m */,
 				4FB9411529BBAD3B00A63A3A /* ViewController.h */,
 				4FB9411629BBAD3B00A63A3A /* ViewController.m */,
+				4F65A1B729BC970600245A69 /* ReceiverXPCManager.h */,
+				4F65A1B829BC970600245A69 /* ReceiverXPCManager.m */,
 				4FB9411829BBAD3C00A63A3A /* Assets.xcassets */,
 				4FB9411D29BBAD3C00A63A3A /* main.m */,
 				4FB9411F29BBAD3C00A63A3A /* Receiver.entitlements */,
+				4F65A1A129BC890700245A69 /* ReceiverXPCService */,
 			);
 			path = Receiver;
 			sourceTree = "<group>";
@@ -230,8 +290,8 @@
 		4FB9413A29BBB8FD00A63A3A /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				4FB9412F29BBAD6900A63A3A /* DataManger.h */,
-				4FB9413029BBAD6900A63A3A /* DataManger.m */,
+				4FB9412F29BBAD6900A63A3A /* DataManager.h */,
+				4FB9413029BBAD6900A63A3A /* DataManager.m */,
 				4FB9414A29BBBEF600A63A3A /* DataManagedObject.h */,
 				4FB9414B29BBBEF600A63A3A /* DataManagedObject.m */,
 			);
@@ -264,6 +324,8 @@
 			children = (
 				4FB9414F29BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.h */,
 				4FB9415029BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm */,
+				4F65A1BB29BCAD9200245A69 /* NSXPCInterface+CoreDataXPCInterface.h */,
+				4F65A1BC29BCAD9800245A69 /* NSXPCInterface+CoreDataXPCInterface.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -271,9 +333,6 @@
 		4FB9417229BBD7B100A63A3A /* PublisherXPCService */ = {
 			isa = PBXGroup;
 			children = (
-				4FB9418129BBE3B500A63A3A /* ServiceDelegate.h */,
-				4FB9418229BBE3B500A63A3A /* ServiceDelegate.m */,
-				4FB9417329BBD7B100A63A3A /* PublisherXPCServiceProtocol.h */,
 				4FB9417429BBD7B100A63A3A /* PublisherXPCService.h */,
 				4FB9417529BBD7B100A63A3A /* PublisherXPCService.m */,
 				4FB9417729BBD7B100A63A3A /* main.m */,
@@ -286,8 +345,7 @@
 		4FEAC18229BC5C0400F93DB0 /* XPC */ = {
 			isa = PBXGroup;
 			children = (
-				4FEAC18329BC5E6A00F93DB0 /* XPCHelperInputProtocol.h */,
-				4F65A19B29BC870700245A69 /* XPCHelperOutputProtocol.h */,
+				4F65A1BA29BCA6AC00245A69 /* CoreDataXPCProtocol.h */,
 				4F65A18629BC756300245A69 /* XPCServiceName.h */,
 			);
 			path = XPC;
@@ -296,6 +354,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4F65A19F29BC890700245A69 /* ReceiverXPCService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F65A1AD29BC890700245A69 /* Build configuration list for PBXNativeTarget "ReceiverXPCService" */;
+			buildPhases = (
+				4F65A19C29BC890700245A69 /* Sources */,
+				4F65A19D29BC890700245A69 /* Frameworks */,
+				4F65A19E29BC890700245A69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReceiverXPCService;
+			productName = ReceiverXPCService;
+			productReference = 4F65A1A029BC890700245A69 /* ReceiverXPCService.xpc */;
+			productType = "com.apple.product-type.xpc-service";
+		};
 		4FB940F829BBAD2C00A63A3A /* Publisher */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4FB9410929BBAD2C00A63A3A /* Build configuration list for PBXNativeTarget "Publisher" */;
@@ -322,10 +397,12 @@
 				4FB9410C29BBAD3B00A63A3A /* Sources */,
 				4FB9410D29BBAD3B00A63A3A /* Frameworks */,
 				4FB9410E29BBAD3B00A63A3A /* Resources */,
+				4F65A1B029BC890700245A69 /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4F65A1AB29BC890700245A69 /* PBXTargetDependency */,
 			);
 			name = Receiver;
 			productName = Receiver;
@@ -375,6 +452,9 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					4F65A19F29BC890700245A69 = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					4FB940F829BBAD2C00A63A3A = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -405,12 +485,20 @@
 				4FB940F829BBAD2C00A63A3A /* Publisher */,
 				4FB9417029BBD7B000A63A3A /* PublisherXPCService */,
 				4FB9410F29BBAD3B00A63A3A /* Receiver */,
+				4F65A19F29BC890700245A69 /* ReceiverXPCService */,
 				4FB9412629BBAD4800A63A3A /* CoreDataXPCHelper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4F65A19E29BC890700245A69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4FB940F729BBAD2C00A63A3A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -437,6 +525,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4F65A19C29BC890700245A69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F65A1A729BC890700245A69 /* main.m in Sources */,
+				4F65A1C029BCAE8800245A69 /* NSXPCInterface+CoreDataXPCInterface.m in Sources */,
+				4F65A1A529BC890700245A69 /* ReceiverXPCService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4FB940F529BBAD2C00A63A3A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -444,12 +542,14 @@
 				4FB9410029BBAD2C00A63A3A /* ViewController.m in Sources */,
 				4FB9414229BBB94900A63A3A /* AppMenuItem.m in Sources */,
 				4FB9414929BBBCA200A63A3A /* ViewModel.m in Sources */,
+				4F65A1B629BC947B00245A69 /* PublisherXPCManager.m in Sources */,
 				4FB9410729BBAD2C00A63A3A /* main.m in Sources */,
 				4FB940FD29BBAD2C00A63A3A /* AppDelegate.m in Sources */,
 				4FB9414629BBBB0200A63A3A /* EditMenuItem.m in Sources */,
+				4F65A1BE29BCAE8700245A69 /* NSXPCInterface+CoreDataXPCInterface.m in Sources */,
 				4FB9414C29BBBEF600A63A3A /* DataManagedObject.m in Sources */,
 				4FB9415129BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm in Sources */,
-				4FB9413129BBAD6900A63A3A /* DataManger.m in Sources */,
+				4FB9413129BBAD6900A63A3A /* DataManager.m in Sources */,
 				4FB9413E29BBB93200A63A3A /* BaseMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,10 +562,12 @@
 				4FB9411729BBAD3B00A63A3A /* ViewController.m in Sources */,
 				4FB9411E29BBAD3C00A63A3A /* main.m in Sources */,
 				4FB9414D29BBBEF900A63A3A /* DataManagedObject.m in Sources */,
+				4F65A1B929BC970600245A69 /* ReceiverXPCManager.m in Sources */,
 				4FB9414329BBB96700A63A3A /* AppMenuItem.m in Sources */,
 				4FB9415229BBCFCB00A63A3A /* NSObject+Foundation_IvarDescription.mm in Sources */,
+				4F65A1BD29BCAD9800245A69 /* NSXPCInterface+CoreDataXPCInterface.m in Sources */,
 				4FB9411429BBAD3B00A63A3A /* AppDelegate.m in Sources */,
-				4FB9413229BBAD6D00A63A3A /* DataManger.m in Sources */,
+				4FB9413229BBAD6D00A63A3A /* DataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +576,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FB9412A29BBAD4800A63A3A /* main.m in Sources */,
+				4F65A1C129BCAE8900245A69 /* NSXPCInterface+CoreDataXPCInterface.m in Sources */,
 				4F65A18529BC613300245A69 /* HelperDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,7 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FB9417829BBD7B100A63A3A /* main.m in Sources */,
-				4FB9418529BBE3EF00A63A3A /* ServiceDelegate.m in Sources */,
+				4F65A1BF29BCAE8800245A69 /* NSXPCInterface+CoreDataXPCInterface.m in Sources */,
 				4FB9417629BBD7B100A63A3A /* PublisherXPCService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,6 +594,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4F65A1AB29BC890700245A69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F65A19F29BC890700245A69 /* ReceiverXPCService */;
+			targetProxy = 4F65A1AA29BC890700245A69 /* PBXContainerItemProxy */;
+		};
 		4FB9417C29BBD7B100A63A3A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4FB9417029BBD7B000A63A3A /* PublisherXPCService */;
@@ -499,6 +607,48 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		4F65A1AE29BC890700245A69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Receiver/ReceiverXPCService/ReceiverXPCService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P53D29U9LJ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Receiver/ReceiverXPCService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ReceiverXPCService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.Receiver.XPCService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		4F65A1AF29BC890700245A69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Receiver/ReceiverXPCService/ReceiverXPCService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P53D29U9LJ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Receiver/ReceiverXPCService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ReceiverXPCService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.Receiver.XPCService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
 		4FB940F029BBAD1400A63A3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -787,6 +937,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4F65A1AD29BC890700245A69 /* Build configuration list for PBXNativeTarget "ReceiverXPCService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F65A1AE29BC890700245A69 /* Debug */,
+				4F65A1AF29BC890700245A69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4FB940E629BBAD1400A63A3A /* Build configuration list for PBXProject "CoreDataXPC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DataManger : NSObject
-@property (class, retain, readonly) DataManger *sharedInstance;
+@interface DataManager : NSObject
+@property (class, retain, readonly) DataManager *sharedInstance;
 @property (retain, readonly) NSPersistentContainer *container; // only accessed by operations on self.queue
 @property (retain, readonly) NSManagedObjectContext *context; // only accessed by operations on self.queue
 @property (retain, readonly) NSOperationQueue *queue;

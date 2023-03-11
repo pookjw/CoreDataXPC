@@ -1,28 +1,25 @@
 //
-//  DataManger.m
+//  DataManager.m
 //  Publisher
 //
 //  Created by Jinwoo Kim on 3/11/23.
 //
 
-#import "DataManger.h"
+#import "DataManager.h"
 #import "DataManagedObject.h"
-#import "PublisherXPCServiceProtocol.h"
-#import "XPCServiceName.h"
 
-@interface DataManger ()
+@interface DataManager ()
 @property (readonly) NSEntityDescription *entityDescription;
-@property (retain) NSXPCConnection *serviceConnection;
 @end
 
-@implementation DataManger
+@implementation DataManager
 
-+ (DataManger *)sharedInstance {
-    static DataManger *sharedInstance = nil;
++ (DataManager *)sharedInstance {
+    static DataManager *sharedInstance = nil;
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
-        sharedInstance = [DataManger new];
+        sharedInstance = [DataManager new];
     });
     
     return sharedInstance;
@@ -33,8 +30,6 @@
         [self setupQueue];
         [self setupContainer];
         [self setupContext];
-        [self setupServiceConnection];
-        [self addObserver];
     }
     
     return self;
@@ -45,8 +40,6 @@
     [_context release];
     [_queue cancelAllOperations];
     [_queue release];
-    [_serviceConnection invalidate];
-    [_serviceConnection release];
     [super dealloc];
 }
 
@@ -110,51 +103,6 @@
     }];
 }
 
-- (void)setupServiceConnection {
-    [self.queue addBarrierBlock:^{
-        NSXPCConnection *serviceConnection = [[NSXPCConnection alloc] initWithServiceName:kPublisherXPCServiceName];
-        
-        NSXPCInterface *remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(PublisherXPCServiceProtocol)];
-        
-        [remoteObjectInterface setClasses:[NSSet setWithArray:@[NSDictionary.class, NSArray.class, NSString.class, NSURL.class]]
-                              forSelector:@selector(objectsDidChange:withReply:)
-                            argumentIndex:0
-                                  ofReply:NO];
-        
-        serviceConnection.remoteObjectInterface = remoteObjectInterface;
-        
-        serviceConnection.invalidationHandler = ^{
-            [self.queue addBarrierBlock:^{
-                // Release objects captured by block.
-                serviceConnection.invalidationHandler = nil;
-                static NSUInteger retryCount = 0;
-                
-                retryCount += 1;
-                NSLog(@"Invaldated XPC Connection, retrying... (%ld)", retryCount);
-                
-                if (retryCount == 10) {
-                    assert("Recheaded maximum count of retry.");
-                }
-                
-                [self setupServiceConnection];
-            }];
-        };
-        
-        self.serviceConnection = serviceConnection;
-        [serviceConnection activate];
-        [serviceConnection release];
-    }];
-}
-
-- (void)addObserver {
-    [self.queue addBarrierBlock:^{
-        [NSNotificationCenter.defaultCenter addObserver:self
-                                               selector:@selector(triggeredObjectsDidChangeNotification:)
-                                                   name:NSManagedObjectContextObjectsDidChangeNotification
-                                                 object:self.context];
-    }];
-}
-
 - (NSEntityDescription *)entityDescription {
     NSEntityDescription *entityDescription = [NSEntityDescription new];
     
@@ -180,41 +128,6 @@
     [timestampAttributeDescription release];
     
     return [entityDescription autorelease];
-}
-
-- (void)triggeredObjectsDidChangeNotification:(NSNotification *)notification {
-    NSDictionary *userInfo = notification.userInfo;
-    
-    NSMutableDictionary *changes = [NSMutableDictionary new];
-    [userInfo enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id _Nonnull obj, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[NSSet<DataManagedObject *> class]]) {
-            NSMutableArray *URIRepresentations = [NSMutableArray new];
-            
-            [obj enumerateObjectsUsingBlock:^(DataManagedObject * _Nonnull obj, BOOL * _Nonnull stop) {
-                [URIRepresentations addObject:obj.objectID.URIRepresentation];
-            }];
-            
-            NSArray *results = [URIRepresentations copy];
-            [URIRepresentations release];
-            changes[key] = results;
-            [results release];
-        }
-    }];
-    
-    id<PublisherXPCServiceProtocol> remoteObjectProxy = [self.serviceConnection remoteObjectProxyWithErrorHandler:^(NSError * _Nonnull error) {
-        if (error.code != 4097) {
-            [NSException raise:NSInternalInconsistencyException format:@"%@", error];
-        }
-    }];
-    
-    NSDictionary *results = [changes copy];
-    [changes release];
-    
-    [remoteObjectProxy objectsDidChange:results withReply:^{
-        NSLog(@"GOOD");
-    }];
-    
-    [results release];
 }
 
 @end

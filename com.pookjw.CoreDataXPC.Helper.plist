@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>com.pookjw.CoreDataXPCHelper</string>
+	<string>com.pookjw.CoreDataXPC.Helper</string>
 	<key>KeepAlive</key>
 	<true/>
 	<key>RunAtLoad</key>

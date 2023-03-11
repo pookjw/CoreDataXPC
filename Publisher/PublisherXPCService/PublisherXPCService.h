@@ -6,7 +6,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PublisherXPCServiceProtocol.h"
 
-@interface PublisherXPCService : NSObject <PublisherXPCServiceProtocol>
+@interface PublisherXPCService : NSObject <NSXPCListenerDelegate>
 @end

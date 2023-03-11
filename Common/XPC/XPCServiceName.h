@@ -10,6 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 static NSString * const kPublisherXPCServiceName = @"com.pookjw.Publisher.XPCService";
-static NSString * const kHelperXPCMachServiceName = @"com.pookjw.CoreDataXPCHelper";
+static NSString * const kReceiverXPCServiceName = @"com.pookjw.Receiver.XPCService";
+static NSString * const kHelperXPCMachServiceName = @"com.pookjw.CoreDataXPC.Helper";
 
 NS_ASSUME_NONNULL_END
